@@ -1,0 +1,49 @@
+MUST BE AT THE TOP OF YOUR "Tweak.xm" FILE: #import <libactivator/libactivator.h>
+MUST BE ADDED TO YOUR MAKEFILE: TweakName_LIBRARIES = activator
+
+//Activator Stuff
+@interface TWEAKNAME : NSObject <LAListener>
+@end
+ 
+@implementation TWEAKNAME
+ 
+- (void)activator:(LAActivator *)activator receiveEvent:(LAEvent *)event {
+	if(IF STATMENT) {	//Checks if its already activated
+		
+		//Code Here
+		
+		return;
+		}
+		
+	//Place code to enable tweak
+	
+		 
+	[event setHandled:YES]; // To prevent the default OS implementation
+}
+ 
+- (void)activator:(LAActivator *)activator abortEvent:(LAEvent *)event {
+
+	//Place code to disable tweak
+	
+}
+
+//Makes Tweak Show Up in Activator
+- (NSString *)activator:(LAActivator *)activator requiresLocalizedTitleForListenerName:(NSString *)listenerName {
+	return @"TWEAK NAME";
+		//Name in Activator Selection
+}
+- (NSString *)activator:(LAActivator *)activator requiresLocalizedDescriptionForListenerName:(NSString *)listenerName {
+	return @"DESCRIPTION";
+		//Description of Activator Action
+}
+- (NSArray *)activator:(LAActivator *)activator requiresCompatibleEventModesForListenerWithName:(NSString *)listenerName {
+	return [NSArray arrayWithObjects:@"springboard", @"lockscreen", @"application", nil];
+		//Where Action can be Activated
+}
+ 
++ (void)load {
+	if ([LASharedActivator isRunningInsideSpringBoard]) {
+		[LASharedActivator registerListener:[self new] forName:@"com.YourPackageID.TweakName"];
+	}
+}
+@end

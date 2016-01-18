@@ -1,3 +1,6 @@
+IN YOUR MAKE FILE, YOU MUST ADD "UIKit" TO FRAMEWORKS:
+i.e. TweakName_FRAMEWORKS = UIKit
+
 UIAlertView *alert1 = [[UIAlertView alloc] initWithTitle:@"TITLE"       //Text for the title
 message:@"BODY MESSAGE"               //Text for the actual message
 delegate:self

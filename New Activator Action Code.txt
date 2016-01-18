@@ -1,5 +1,9 @@
-MUST BE AT THE TOP OF YOUR "Tweak.xm" FILE: #import <libactivator/libactivator.h>
-MUST BE ADDED TO YOUR MAKEFILE: TweakName_LIBRARIES = activator
+**MUST BE AT THE TOP OF YOUR "Tweak.xm" FILE:**
+#import <libactivator/libactivator.h>
+
+**MUST BE ADDED TO YOUR MAKEFILE:**
+TweakName_LIBRARIES = activator
+
 
 //Activator Stuff
 @interface TWEAKNAME : NSObject <LAListener>

@@ -6,4 +6,4 @@ Example@3x.png    //[86px by 86px]
 
 
 **My Method To Making Icons:**
-I create a new project 400px by 400 px, make my icon, then resize and export.
+I create a new project 400px by 400px, make my icon, then resize and export.

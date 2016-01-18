@@ -1,0 +1,7 @@
+1. If you are having a problem compiling a tweak, try compiling use the following: "SDKVERSION=8.1 make messages=all".  This will show specifics about your error message
+
+2. Try reinstalling your iPhoneOS SDK or you may just be missing Headers
+
+4. Ask on <a href="https://www.reddit.com/r/jailbreakdevelopers/">/r/JailbreakDevelopers</a>
+
+3. Try reinstalling Theos

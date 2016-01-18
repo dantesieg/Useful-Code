@@ -1,0 +1,42 @@
+THESE MUST BE INCLUDED AT THE TOP OF YOUR TWEAK FILE:
+#include <CoreFoundation/CFNotificationCenter.h>
+#import <Foundation/NSUserDefaults.h>
+
+@interface NSUserDefaults (UFS_Category)
+- (id)objectForKey:(NSString *)key inDomain:(NSString *)domain;
+- (void)setObject:(id)value forKey:(NSString *)key inDomain:(NSString *)domain;
+@end
+
+static NSString *domainString = @"com.lacertosusrepo.EXAMPLETWEAK";
+static NSString *notificationString = @"com.lacertosusrepo.EXAMPLETWEAK/preferences.changed";
+
+
+
+//THIS GOES AT THE BOTTOM OF YOUR TWEAK FILE
+static void notificationCallback(CFNotificationCenterRef center, void *observer, CFStringRef name, const void *object, CFDictionaryRef userInfo) {
+
+
+	//Here is where your preference options will go, here are the ways to obtain certain variables like NSStrings, INT values, and Switches
+	    
+     //For a YES/NO switch, use:
+	NSNumber *a = (NSNumber *)[[NSUserDefaults standardUserDefaults] objectForKey:@"%%EXAMPLE BOOL%%" inDomain:domainString];
+	%%EXAMPLE BOOL%% = (a)? [a boolValue]:YES;
+
+      //For getting a integer/number, use:
+  NSNumber *b = (NSNumber *)[[NSUserDefaults standardUserDefaults] objectForKey:@"%%EXAMPLE INT%%" inDomain:domainString];
+	%%EXAMPLE INT%% = (b)? [b intValue]:0;
+
+    //For getting a String (text), use:
+  NSString *c = (NSString *)[[NSUserDefaults standardUserDefaults] objectForKey:@"%%EXAMPLE STRING%%" inDomain:domainString];
+	%%EXAMPLE STRING%% = (c)? (c):%%EXAMPLE STRING%%;
+}
+	
+%ctor {
+	NSAutoreleasePool *pool = [NSAutoreleasePool new];
+	//set initial `enable' variable
+	notificationCallback(NULL, NULL, NULL, NULL, NULL);
+
+	//register for notifications
+	CFNotificationCenterAddObserver(CFNotificationCenterGetDarwinNotifyCenter(), NULL, notificationCallback, (CFStringRef)notificationString, NULL, CFNotificationSuspensionBehaviorCoalesce);
+	[pool release];
+}

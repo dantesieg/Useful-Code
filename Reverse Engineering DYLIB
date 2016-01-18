@@ -1,4 +1,4 @@
-A quick way is to run:
+A quick way is to run this command in a termianl:
 
 strings %%.DYLIB Path%% | sort -u
 

@@ -1,0 +1,23 @@
+EACH LINE THAT IS DIFFERENT FROM NORMAL IS ANNOTATED AND MARKED (***)
+
+(***)THEOS_DEVICE_IP = xxx.xxx.x.x                           //Used when installing from your PC/Mac to your iDevice, just change the Xs to your iDevice's IP
+
+(***)SDK = iPhoneOS8.1                                       //Tells your compiler what iOS to compile with, I use an iOS 8.1 SDK, but change it if you use an older/newer version
+
+(***)THEOS_BUILD_DIR = FOLDERNAME                            //Just adds neatness to your project by exporting the compiles .DEBS into a specific folder
+
+(***)export ARCHS = armv7 arm64                              //VERY IMPORTANT! Compiles your tweak for both older and newer devices
+
+(***)export TARGET = iphone:clang:8.1                        //Uroboro (Developer) suggested adding this, also used when compiling
+
+include theos/makefiles/common.mk
+
+TWEAK_NAME = ExampleTweak
+ExampleTweak_FILES = Tweak.xm
+(***)ExampleTweak_FRAMEWORKS = UIKIT                        //When using specific elements, you may have to include them. For example, if you try to display a alert, add "UIKit"
+(***)ScreenLock_LIBRARIES = activator                       //Sometimes you have to incorperate special libraries. For example if you're tweak uses Activator, you have to import this library
+
+include $(THEOS_MAKE_PATH)/tweak.mk
+
+after-install::
+	install.exec "killall -9 SpringBoard"

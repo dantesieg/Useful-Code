@@ -1,0 +1,10 @@
+A quick way is to run:
+
+strings %%.DYLIB Path%% | sort -u
+
+Shows what classes and methods it uses.
+                                            __________________
+                                            |////////////////|
+                                            |[Thanks Uroboro]|
+                                            |////////////////|
+                                            ------------------

@@ -1,6 +1,8 @@
+///////////////////////////////////////////////////////////////////////
 THESE MUST BE INCLUDED AT THE TOP OF YOUR TWEAK FILE:
 #include <CoreFoundation/CFNotificationCenter.h>
 #import <Foundation/NSUserDefaults.h>
+///////////////////////////////////////////////////////////////////////
 
 @interface NSUserDefaults (UFS_Category)
 - (id)objectForKey:(NSString *)key inDomain:(NSString *)domain;

@@ -24,9 +24,11 @@ static void notificationCallback(CFNotificationCenterRef center, void *observer,
 	NSNumber *a = (NSNumber *)[[NSUserDefaults standardUserDefaults] objectForKey:@"%%EXAMPLE BOOL%%" inDomain:domainString];
 	%%EXAMPLE BOOL%% = (a)? [a boolValue]:YES;
 
+
       //For getting a integer/number, use:
   NSNumber *b = (NSNumber *)[[NSUserDefaults standardUserDefaults] objectForKey:@"%%EXAMPLE INT%%" inDomain:domainString];
 	%%EXAMPLE INT%% = (b)? [b intValue]:0;
+
 
     //For getting a String (text), use:
   NSString *c = (NSString *)[[NSUserDefaults standardUserDefaults] objectForKey:@"%%EXAMPLE STRING%%" inDomain:domainString];

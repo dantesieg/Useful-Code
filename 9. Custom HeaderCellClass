@@ -1,0 +1,82 @@
+//In your ListController.h, add:
+///////////////////////////////
+
+#import <Preferences/PSListController.h>
+
+@interface _TWEAK_ListController : PSListController
+@end
+
+@interface _YOURTWEAK_CustomHeaderCell : UIView
+@property (nonatomic,assign) UILabel *headerLabel;
+@property (nonatomic,assign) UILabel *subHeaderLabel;
+@end
+
+//In your ListController.m,
+//add this to your specifiers:
+/////////////////////////////
+
+-(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+    if (section == 0) {
+        return (UIView *)[[HaptikCenterCustomHeaderCell alloc] init];
+    }
+    return nil;
+}
+
+-(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+    if (section == 0) {
+        return 140.f;
+    }
+    return (CGFloat)-1;
+}
+
+//Then add a new implementation
+//named _YOURTWEAK_CustomHeaderCell:
+///////////////////////////////////
+
+@implementation HaptikCenterCustomHeaderCell
+@synthesize headerLabel,subHeaderLabel,randomLabel;
+
+- (id)init {
+
+	   self = [super initWithFrame:CGRectZero];
+	   
+       if (self) {
+ 
+            self.headerLabel = [[UILabel alloc] initWithFrame:CGRectZero];
+            [self.headerLabel setNumberOfLines:1];
+            [self.headerLabel setFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:36]];
+            [self.headerLabel setText:@"HaptikCenter BETA"];                                               //Edit the displayed text here
+            [self.headerLabel setBackgroundColor:[UIColor clearColor]];
+            [self.headerLabel setTextColor:[UIColor colorWithRed:0.16 green:0.50 blue:0.73 alpha:1.0]];     //Edit the color of the text here
+            [self.headerLabel setTextAlignment:NSTextAlignmentCenter];
+            [self addSubview:self.headerLabel];
+            [self.headerLabel setTranslatesAutoresizingMaskIntoConstraints:NO];
+            [self addConstraint:[NSLayoutConstraint constraintWithItem:self.headerLabel attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeBottom multiplier:0.2 constant:0]];
+            [self addConstraint:[NSLayoutConstraint constraintWithItem:self.headerLabel attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeCenterX multiplier:1 constant:0]];
+        
+            self.subHeaderLabel = [[UILabel alloc] initWithFrame:CGRectZero];
+            [self.subHeaderLabel setNumberOfLines:1];
+            [self.subHeaderLabel setFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:17]];
+            [self.subHeaderLabel setText:@"Haptic Feedback For Your Control Center"];                            //Edit the displayed text here
+            [self.subHeaderLabel setBackgroundColor:[UIColor clearColor]];
+            [self.subHeaderLabel setTextColor:[UIColor colorWithRed:0.17 green:0.24 blue:0.31 alpha:0.7]];       //Edit the color of the text here
+            [self.subHeaderLabel setTextAlignment:NSTextAlignmentCenter];
+            [self addSubview:self.subHeaderLabel];
+            [self.subHeaderLabel setTranslatesAutoresizingMaskIntoConstraints:NO];
+            [self addConstraint:[NSLayoutConstraint constraintWithItem:self.subHeaderLabel attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self.headerLabel attribute:NSLayoutAttributeBottom multiplier:1 constant:5]];
+            [self addConstraint:[NSLayoutConstraint constraintWithItem:self.subHeaderLabel attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeCenterX multiplier:1 constant:0]];
+    }
+
+    return self;
+}
+
+//Finally, add this to your Root.plist
+//(or whatever you have named your preferences plist):
+/////////////////////////////////////////////////////
+
+<dict>
+			<key>cell</key>
+			<string>PSGroupCell</string>
+			<key>headerCellClass</key>
+			<string>_TWEAKNAME_CustomHeaderCell</string>
+</dict>

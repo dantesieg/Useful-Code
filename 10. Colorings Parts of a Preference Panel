@@ -1,9 +1,35 @@
 //The following lines of code are independent and can be added easily into your .mm file for your preferences.
 
-//Navigation Bar Color
+//UIColor Examples:   //////////////////////////////////////////////////////////////
+UIColor *regularColor = blackColor [or darkGrayColor, lightGreyColor, whiteColor,//
+                      //grayColor, redColor, greenColor, blueColor, cyanColor,////
+                      //yellowColor, magentaColor, orangeColor, purpleColor,////
+                      //brownColor, clearColor]///////////////////////////////
+                      /////////////////////////
+                      
+UIColor *rgbColor = [UIColor colorWithRed:x/255 green:x/255 blue:x/255];
 
-//Navigation Bar Text Color
+#define UIColorFromRGB(rgbValue) [UIColor colorWithRed:((float))((rgbValue & 0xFF0000) >> 16))/255
+                                                 green:((float))((rgbValue & 0x00FF00) >> 8))/255
+                                                  blue:((float))((rgbValue & 0x0000FF) >> 0))/255
+                                                 alpha:1.0];
 
-//Switches Color (for ON)
+//Add the following method to your .mm files
+- (void)viewWillApper {
 
-//Sliders Color
+  //Navigation Bar Color
+  self.navigationController.navigationController.navigationBar.tintColor = UIColorFromRGB(0xFFFFFF);
+  
+  //Navigation Bar Text Color
+  self.navigationController.navigationController.navigationBar.barTintColor = regularColor;
+
+  //Switches Color (for ON)
+	[UISwitch appearanceWhenContainedIn:self.class, nil].onTintColor = rgbColor;
+
+  //Sliders Color
+	[UISlider appearanceWhenContainedIn:self.class, nil].tintColor = regularColor;
+
+  //Segmented Contol
+	[UISegmentedControl appearanceWhenContainedIn:self.class, nil].tintColor = UIColorFromRGB(0x000000);
+
+}

@@ -1,6 +1,7 @@
 ///////////////////////////////////////////////////////////////////////
 IN YOUR MAKE FILE, YOU MUST ADD "UIKit" TO FRAMEWORKS:
 i.e. TweakName_FRAMEWORKS = UIKit
+NOTE: depricated for ios 9.3.3, use UIAlertController for iOS8+
 ///////////////////////////////////////////////////////////////////////
 
 UIAlertView *alert1 = [[UIAlertView alloc] initWithTitle:@"TITLE"                      //Text for the title

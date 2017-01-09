@@ -38,7 +38,7 @@ Sample Image: http://i.imgur.com/q0ldELu.png
 ///////////////////////////////////
 
 @implementation HaptikCenterCustomHeaderCell
-@synthesize headerLabel,subHeaderLabel,randomLabel;
+@synthesize headerLabel,subHeaderLabel;
 
 - (id)init {
 
